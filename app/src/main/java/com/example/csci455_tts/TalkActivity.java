@@ -2,6 +2,7 @@ package com.example.csci455_tts;
 
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class TalkActivity extends AppCompatActivity implements View.OnClickListe
         talkButton.setOnClickListener(this);
         tts = new TTS(this);
         tts.start();
+        Log.v("**Log**", "TalkActivity class");
 
     }
 
