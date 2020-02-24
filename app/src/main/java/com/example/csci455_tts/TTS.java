@@ -30,12 +30,14 @@ public class TTS extends Thread implements TextToSpeech.OnInitListener {
 
         if (status == TextToSpeech.SUCCESS) {
             result = tts.setLanguage(Locale.US);
-            tts.setPitch(0);
-            tts.setSpeechRate(0);
+            //tts.setPitch(0);
+            //tts.setSpeechRate(0);
+            Log.v("**Log**","ph success");
         }
 
         if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
             Toast.makeText(context, "Language or Data not working", Toast.LENGTH_LONG).show();
+            Log.v("**Log**","ph lang or data not working");
         }
 
 
@@ -49,6 +51,7 @@ public class TTS extends Thread implements TextToSpeech.OnInitListener {
                     String response = msg.getData().getString("TT");
                     //do something with the message
                     Log.v("**SPEECH**", response);
+                    Log.v("**SPEECH**", "ph looper");
                     speakOut(response);
                 }
             };
@@ -64,6 +67,7 @@ public class TTS extends Thread implements TextToSpeech.OnInitListener {
             last = text;
 
             tts.speak(text,TextToSpeech.QUEUE_FLUSH,null,null);
+            Log.v("**SPEECH**", "ph speakOut");
 
             while (tts.isSpeaking()) {
                 try {

@@ -23,7 +23,6 @@ public class TalkActivity extends AppCompatActivity implements View.OnClickListe
         talkButton.setOnClickListener(this);
         tts = new TTS(this);
         tts.start();
-        Log.v("**Log**", "TalkActivity class");
 
     }
 
