@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void testMove() {
 
         Log.v("**Log**", "Move Button Pressed");
+        Log.w("**Log**", "Move Button Pressed");
         Intent movingRobot = new Intent(this, MoveActivity.class);
         startActivity(movingRobot);
     }

@@ -31,7 +31,7 @@ public class NetworkClient extends AppCompatActivity {
     int SERVER_PORT = 6942;
     String SERVER_IP = "10.200.22.203";
 
-    TTS tts;
+    //TTS tts;
     //String buttonInput;
 
     //NetworkClient networkClient = new NetworkClient();
@@ -52,7 +52,7 @@ public class NetworkClient extends AppCompatActivity {
         etMessage = findViewById(R.id.etMessage);
         btnSend = findViewById(R.id.testServer);
 
-        tts = new TTS(this);
+        //tts = new TTS(this);
 
         Button btnConnect = findViewById(R.id.btnConnect);
         btnConnect.setOnClickListener(new View.OnClickListener() {
@@ -76,47 +76,23 @@ public class NetworkClient extends AppCompatActivity {
                 }
             }
         });
-/*
-        //HEAD TURN/TILT BUTTONS
-        Button headUpButton = (Button) findViewById(R.id.tiltHeadUp);
-        headUpButton.setOnClickListener(this);
-        Button headDownButton = (Button) findViewById(R.id.tiltHeadDown);
-        headDownButton.setOnClickListener(this);
-        Button headRightButton = (Button) findViewById(R.id.turnHeadRight);
-        headRightButton.setOnClickListener(this);
-        Button headLeftButton = (Button) findViewById(R.id.turnHeadLeft);
-        headLeftButton.setOnClickListener(this);
 
-        //BODY/WAIST BUTTONS
-        Button BodyRightButton = (Button) findViewById(R.id.moveBodyRight);
-        BodyRightButton.setOnClickListener(this);
-        Button BodyLeftButton = (Button) findViewById(R.id.moveBodyLeft);
-        BodyLeftButton.setOnClickListener(this);
-
-        //DRIVE/TURN BUTTONS
-        Button driveForwardButton = (Button) findViewById(R.id.driveForward);
-        driveForwardButton.setOnClickListener(this);
-        Button driveReverseButton = (Button) findViewById(R.id.driveReverse);
-        driveReverseButton.setOnClickListener(this);
-        Button driveRightButton = (Button) findViewById(R.id.driveRight);
-        driveRightButton.setOnClickListener(this);
-        Button driveLeftButton = (Button) findViewById(R.id.driveLeft);
-        driveLeftButton.setOnClickListener(this);
-
-        //STOP BUTTON
-        Button stop = (Button) findViewById(R.id.stopButton);
-        stop.setOnClickListener(this);*/
     }
     private PrintWriter output;
     private BufferedReader input;
+    Socket socket;
+
     class Thread1 implements Runnable {
         public void run() {
-            Socket socket;
+            //Socket socket;
             Log.v("**Log**", "ph thread1 run socket");
             try {
                 socket = new Socket(SERVER_IP, SERVER_PORT);
                 Log.v("**Log**", "ph thread1 run try1.1");
-                output = new PrintWriter(socket.getOutputStream());
+                if(socket.getOutputStream() != null) {
+                    System.out.println("ph" + socket.getOutputStream());
+                    output = new PrintWriter(socket.getOutputStream());
+                }
                 Log.v("**Log**", "ph thread1 run try1.2");
                 input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 Log.v("**Log**", "ph thread1 run try1.3");
@@ -154,7 +130,7 @@ public class NetworkClient extends AppCompatActivity {
                     }
                     //call TTS method from message !!!
                     //LEVEL 2
-                    tts.speakOut(message);
+                    //tts.speakOut(message);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -170,132 +146,48 @@ public class NetworkClient extends AppCompatActivity {
             Log.v("**Log**", "ph thread3 message 1: " + message);
         }
 
-        //new method
-        //public String setMessage(String message) {
-        //    this.message = message;
-        //    return message;
-        //}
-
-
-        /*
-        //set it up so client sends integers !!
-        private int message;
-        Thread3(int message) {
-            this.message = message;
-
-        }*/
-
-/*
-        public void onClick2(View v) {
-            //Toast.makeText(this, "onClickMove", Toast.LENGTH_SHORT).show();
-            //networkClient = new NetworkClient();
-
-            switch (v.getId()) {
-
-                //head tilt/turn
-                case R.id.tiltHeadUp:
-                    buttonInput = "39";
-                    //networkClient.setMessage(input);
-                    //Message sendMsg = tts.handler.obtainMessage();
-                    //Bundle b = new Bundle();
-                    //b.putString("TT", input);
-                    //sendMsg.setData(b);
-                    //tts.handler.sendMessage(sendMsg);
-                    //Toast.makeText(this, "tilt head up " + input, Toast.LENGTH_SHORT).show();
-                    Log.v("**Log**","ph tilt head up " + buttonInput);
-                    message = buttonInput;
-                    //thread3.run();
-                    break;
-                case R.id.tiltHeadDown:
-                    buttonInput = "25";
-                    //Toast.makeText(this, "tilt head down " + input, Toast.LENGTH_SHORT).show();
-                    Log.v("**Log**","ph tilt head down " +  buttonInput);
-                    message = buttonInput;
-                    //thread3.run();
-                    break;
-                case R.id.turnHeadRight:
-                    buttonInput = "38";
-                    message = buttonInput;
-                    //thread3.run();
-                    //thread3.run();
-                    break;
-                case R.id.turnHeadLeft:
-                    buttonInput = "40";
-                    //Toast.makeText(this, "turn head left " + input, Toast.LENGTH_SHORT).show();
-                    Log.v("**Log**","ph turn head left " +  buttonInput);
-                    message = buttonInput;
-                    //thread3.run();
-                    break;
-
-                //waist/body turn
-                case R.id.moveBodyRight:
-                    buttonInput = "54";
-                    //Toast.makeText(this, "move body right " + input, Toast.LENGTH_SHORT).show();
-                    Log.v("**Log**","ph turn head right " +  buttonInput);
-                    message = buttonInput;
-                    //thread3.run();
-                    break;
-                case R.id.moveBodyLeft:
-                    buttonInput = "52";
-                    //Toast.makeText(this, "move body left " + input, Toast.LENGTH_SHORT).show();
-                    Log.v("**Log**","ph move body left " +  buttonInput);
-                    message = buttonInput;
-                    //thread3.run();
-                    break;
-
-                //Drive/turn
-                case R.id.driveForward:
-                    buttonInput = "116";
-                    //Toast.makeText(this, "drive forward " + input, Toast.LENGTH_SHORT).show();
-                    Log.v("**Log**","ph drive forward " +  buttonInput);
-                    message = buttonInput;
-                    //thread3.run();
-                    break;
-                case R.id.driveReverse:
-                    buttonInput = "111";
-                    //Toast.makeText(this, "drive reverse " + input, Toast.LENGTH_SHORT).show();
-                    Log.v("**Log**","ph drive reverse " +  buttonInput);
-                    message = buttonInput;
-                    //thread3.run();
-                    break;
-                case R.id.driveLeft:
-                    buttonInput = "113";
-                    //Toast.makeText(this, "drive left " + input, Toast.LENGTH_SHORT).show();
-                    Log.v("**Log**","ph drive left " +  buttonInput);
-                    message = buttonInput;
-                    //thread3.run();
-                    break;
-                case R.id.driveRight:
-                    buttonInput = "114";
-                    //Toast.makeText(this, "drive right " + input, Toast.LENGTH_SHORT).show();
-                    Log.v("**Log**","ph drive right " +  buttonInput);
-                    message = buttonInput;
-                    //thread3.run();
-                    break;
-
-                //STOP
-                case R.id.stopButton:
-                    buttonInput = "65";
-                    //Toast.makeText(this, "STOP " + input, Toast.LENGTH_SHORT).show();
-                    Log.v("**Log**","ph stop " +  buttonInput);
-                    message = buttonInput;
-                    //thread3.run();
-                    break;
-            }
-        }*/
         @Override
         public void run() {
-            Log.v("**Log**", "ph thread3 message 2: " + message);
-            output.write(message);
-            output.flush();
-            runOnUiThread(new Runnable() {
+
+            try {
+                //socket = new Socket(SERVER_IP, SERVER_PORT);
+                Log.v("**Log**", "ph thread 3 in try");
+                if(socket.getOutputStream() != null) {
+                    System.out.println("ph" + socket.getOutputStream());
+                    output = new PrintWriter(socket.getOutputStream());
+                }
+                //Log.v("**Log**", "ph thread1 run try1.2");
+                //input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                //Log.v("**Log**", "ph thread1 run try1.3");
+                /*runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvMessages.setText("Connected\n");
+                        //Log.v("**Log**", "ph thread1 run try2");
+                    }
+                });*/
+                //new Thread(new Thread2()).start();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.v("**Log**", "ph thread3 in catch");
+            }
+
+            Log.v("**Log**", "ph thread3 before output check: " + message);
+            Log.v("**Log**", "ph thread3 output: " + output);
+
+            if(output != null){
+
+                Log.v("**Log**", "ph thread3 after output check: " + message);
+                output.write(message);
+                output.flush();
+                runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     tvMessages.append("client: " + message + "\n");
                     etMessage.setText("");
                 }
             });
-        }
+        }}
     }
 
     //Hunter's code for getting IP from D2L, week 6
