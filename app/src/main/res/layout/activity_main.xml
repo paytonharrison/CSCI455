@@ -24,13 +24,19 @@
             android:id="@+id/connect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Connect" />
+            android:text="Client" />
 
         <Button
             android:id="@+id/move"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Move Robot" />
+
+        <Button
+            android:id="@+id/server"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Server" />
 
     </LinearLayout>
 

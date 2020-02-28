@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    android:layout_margin = "16dp"
+    tools:context = ".MainActivity">
+
+    <EditText
+        android:id="@+id/etIP"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="IP-Address"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etPort"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/etIP"
+        android:hint="Port No"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btnConnect"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/etPort"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="Connect To Server" />
+
+    <TextView
+        android:id = "@+id/tvMessages"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_above = "@+id/etMessage"
+        android:layout_below = "@+id/btnConnect"
+        android:inputType = "textMultiLine"
+        android:textAppearance = "@style/Base.TextAppearance.AppCompat.Medium" />
+
+    <EditText
+        android:id = "@+id/etMessage"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_above = "@+id/testServer"
+        android:hint = "Enter Message"
+        android:inputType = "text" />
+    <Button
+        android:id = "@+id/testServer"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_alignParentBottom = "true"
+        android:text = "SEND" />
+<!--
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="1dp"
+        tools:layout_editor_absoluteY="279dp">
+
+        <TextView
+            android:id="@+id/headText"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="Head Movement"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/tiltHeadUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/tiltHeadUp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="Tilt Up"
+            app:layout_constraintBottom_toTopOf="@+id/tiltHeadDown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headText"
+            app:layout_constraintVertical_bias="0.39" />
+
+        <TextView
+            android:id="@+id/bodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Body Movement"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/moveBodyLeft"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tiltHeadDown" />
+
+        <Button
+            android:id="@+id/moveBodyLeft"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:text="Move Left"
+            app:layout_constraintBottom_toTopOf="@+id/driveText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyText" />
+
+        <TextView
+            android:id="@+id/driveText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Drive"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/driveForward"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/moveBodyLeft" />
+
+        <Button
+            android:id="@+id/driveForward"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Forward"
+            app:layout_constraintBottom_toTopOf="@+id/stopButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.113"
+            app:layout_constraintStart_toEndOf="@+id/driveLeft"
+            app:layout_constraintTop_toBottomOf="@+id/driveText" />
+
+        <Button
+            android:id="@+id/driveRight"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/stopButton"
+            app:layout_constraintTop_toBottomOf="@+id/driveForward" />
+
+        <Button
+            android:id="@+id/driveLeft"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="53dp"
+            android:layout_marginEnd="135dp"
+            android:layout_marginBottom="60dp"
+            android:text="Left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/driveRight"
+            app:layout_constraintHorizontal_bias="0.216"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/driveText"
+            app:layout_constraintVertical_bias="0.426" />
+
+        <Button
+            android:id="@+id/driveReverse"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Reverse"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/driveForward"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/turnHeadLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="49dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="71dp"
+            android:text="Turn Left"
+            app:layout_constraintBottom_toTopOf="@+id/bodyText"
+            app:layout_constraintEnd_toStartOf="@+id/tiltHeadUp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headText" />
+
+        <Button
+            android:id="@+id/tiltHeadDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tilt Down"
+            app:layout_constraintBottom_toTopOf="@+id/bodyText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tiltHeadUp" />
+
+        <Button
+            android:id="@+id/turnHeadRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turn Right"
+            app:layout_constraintBottom_toTopOf="@+id/bodyText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tiltHeadUp"
+            app:layout_constraintTop_toBottomOf="@+id/headText" />
+
+        <Button
+            android:id="@+id/moveBodyRight"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="70dp"
+            android:text="Move Right"
+            app:layout_constraintBottom_toTopOf="@+id/driveText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/moveBodyLeft"
+            app:layout_constraintTop_toBottomOf="@+id/bodyText"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="1dp"
+            android:background="@android:color/holo_red_light"
+            android:text="STOP"
+            app:layout_constraintBottom_toTopOf="@+id/driveReverse"
+            app:layout_constraintEnd_toStartOf="@+id/driveRight"
+            app:layout_constraintStart_toEndOf="@+id/driveLeft"
+            app:layout_constraintTop_toBottomOf="@+id/driveForward" />
+
+    </android.support.constraint.ConstraintLayout> -->
+</RelativeLayout>

@@ -4,6 +4,7 @@
     <!--SOCKETS -->
     <uses-permission android:name = "android.permission.INTERNET" />
     <uses-permission android:name = "android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name = "android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -23,10 +24,13 @@
         <activity android:name=".TalkActivity">
 
         </activity>
-        <activity android:name=".NetworkConnectionThread">
+        <activity android:name=".NetworkClient">
 
         </activity>
         <activity android:name=".MoveActivity">
+
+        </activity>
+        <activity android:name=".NetworkServer">
 
         </activity>
 
