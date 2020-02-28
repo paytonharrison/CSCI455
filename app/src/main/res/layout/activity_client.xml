@@ -32,7 +32,7 @@
         android:layout_marginTop="16dp"
         android:text="Connect To Server" />
 
-   <!-- <TextView
+    <TextView
         android:id = "@+id/tvMessages"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
@@ -41,7 +41,7 @@
         android:inputType = "textMultiLine"
         android:textAppearance = "@style/Base.TextAppearance.AppCompat.Medium" />
 
-    <EditText
+  <!--  <EditText
         android:id = "@+id/etMessage"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
@@ -59,7 +59,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="600dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"

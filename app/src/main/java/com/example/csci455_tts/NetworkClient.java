@@ -27,7 +27,7 @@ public class NetworkClient extends AppCompatActivity {
     EditText etIP, etPort;
     TextView tvMessages;
     EditText etMessage;
-    Button btnSend;
+    //Button btnSend;
 
     //new
     Button headUpButton;
@@ -63,8 +63,8 @@ public class NetworkClient extends AppCompatActivity {
         etIP = findViewById(R.id.etIP);
         etPort = findViewById(R.id.etPort);
         tvMessages = findViewById(R.id.tvMessages);
-        etMessage = findViewById(R.id.etMessage);
-        btnSend = findViewById(R.id.testServer);
+        //etMessage = findViewById(R.id.etMessage);
+        //btnSend = findViewById(R.id.testServer);
 
         //move buttons
         headUpButton = findViewById(R.id.tiltHeadUp);
@@ -393,7 +393,7 @@ public class NetworkClient extends AppCompatActivity {
                 @Override
                 public void run() {
                     tvMessages.append("client: " + message + "\n");
-                    etMessage.setText("");
+                    //etMessage.setText("");
                 }
             });
         }
