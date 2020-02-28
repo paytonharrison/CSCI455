@@ -67,12 +67,6 @@ public class MoveActivity extends AppCompatActivity implements View.OnClickListe
             //head tilt/turn
             case R.id.tiltHeadUp:
                 input = "39";
-                //networkClient.setMessage(input);
-                //Message sendMsg = tts.handler.obtainMessage();
-                //Bundle b = new Bundle();
-                //b.putString("TT", input);
-                //sendMsg.setData(b);
-                //tts.handler.sendMessage(sendMsg);
                 Toast.makeText(this, "tilt head up " + input, Toast.LENGTH_SHORT).show();
                 thread3.message = input;
                 thread3.run();

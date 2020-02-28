@@ -32,7 +32,7 @@
         android:layout_marginTop="16dp"
         android:text="Connect To Server" />
 
-    <TextView
+   <!-- <TextView
         android:id = "@+id/tvMessages"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
@@ -53,8 +53,8 @@
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
         android:layout_alignParentBottom = "true"
-        android:text = "SEND" />
-<!--
+        android:text = "SEND" /> -->
+
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -246,5 +246,5 @@
             app:layout_constraintStart_toEndOf="@+id/driveLeft"
             app:layout_constraintTop_toBottomOf="@+id/driveForward" />
 
-    </android.support.constraint.ConstraintLayout> -->
-</RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
+ </RelativeLayout>

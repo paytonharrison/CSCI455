@@ -28,6 +28,20 @@ public class NetworkClient extends AppCompatActivity {
     TextView tvMessages;
     EditText etMessage;
     Button btnSend;
+
+    //new
+    Button headUpButton;
+    Button headDownButton;
+    Button headRightButton;
+    Button headLeftButton;
+    Button bodyRightButton;
+    Button bodyLeftButton;
+    Button driveForwardButton;
+    Button driveReverseButton;
+    Button driveLeftButton;
+    Button driveRightButton;
+    Button stopButton;
+
     int SERVER_PORT = 6942;
     String SERVER_IP = "10.200.22.203";
 
@@ -52,6 +66,22 @@ public class NetworkClient extends AppCompatActivity {
         etMessage = findViewById(R.id.etMessage);
         btnSend = findViewById(R.id.testServer);
 
+        //move buttons
+        headUpButton = findViewById(R.id.tiltHeadUp);
+        headDownButton = findViewById(R.id.tiltHeadDown);
+        headRightButton = findViewById(R.id.turnHeadRight);
+        headLeftButton = findViewById(R.id.turnHeadLeft);
+
+        bodyRightButton =  findViewById(R.id.moveBodyRight);
+        bodyLeftButton = findViewById(R.id.moveBodyLeft);
+
+        driveForwardButton = findViewById(R.id.driveForward);
+        driveReverseButton = findViewById(R.id.driveReverse);
+        driveRightButton = findViewById(R.id.driveRight);
+        driveLeftButton =  findViewById(R.id.driveLeft);
+
+        stopButton = findViewById(R.id.stopButton);
+
         tts = new TTS(this);
 
         Button btnConnect = findViewById(R.id.btnConnect);
@@ -67,7 +97,7 @@ public class NetworkClient extends AppCompatActivity {
                 Thread1.start();
             }
         });
-        btnSend.setOnClickListener(new View.OnClickListener() {
+       /* btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String message = etMessage.getText().toString().trim();
@@ -75,37 +105,108 @@ public class NetworkClient extends AppCompatActivity {
                     new Thread(new Thread3(message)).start();
                 }
             }
+        });*/
+        //HEAD
+        headUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "38";      //38    39
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
         });
-/*
-        //HEAD TURN/TILT BUTTONS
-        Button headUpButton = (Button) findViewById(R.id.tiltHeadUp);
-        headUpButton.setOnClickListener(this);
-        Button headDownButton = (Button) findViewById(R.id.tiltHeadDown);
-        headDownButton.setOnClickListener(this);
-        Button headRightButton = (Button) findViewById(R.id.turnHeadRight);
-        headRightButton.setOnClickListener(this);
-        Button headLeftButton = (Button) findViewById(R.id.turnHeadLeft);
-        headLeftButton.setOnClickListener(this);
+        headDownButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "40";      //40    25
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
+        });
+        headRightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "39";      //39    38
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
+        });
+        headLeftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "25";      //25    40
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
+        });
+        bodyRightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "54";
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
+        });
+        bodyLeftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "52";
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
+        });
+        driveForwardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "111";
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
+        });
+        driveReverseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "116";
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
+        });
+        driveLeftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "113";
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
+        });
+        driveRightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "114";
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
+        });
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "65";
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
+            }
+        });
 
-        //BODY/WAIST BUTTONS
-        Button BodyRightButton = (Button) findViewById(R.id.moveBodyRight);
-        BodyRightButton.setOnClickListener(this);
-        Button BodyLeftButton = (Button) findViewById(R.id.moveBodyLeft);
-        BodyLeftButton.setOnClickListener(this);
-
-        //DRIVE/TURN BUTTONS
-        Button driveForwardButton = (Button) findViewById(R.id.driveForward);
-        driveForwardButton.setOnClickListener(this);
-        Button driveReverseButton = (Button) findViewById(R.id.driveReverse);
-        driveReverseButton.setOnClickListener(this);
-        Button driveRightButton = (Button) findViewById(R.id.driveRight);
-        driveRightButton.setOnClickListener(this);
-        Button driveLeftButton = (Button) findViewById(R.id.driveLeft);
-        driveLeftButton.setOnClickListener(this);
-
-        //STOP BUTTON
-        Button stop = (Button) findViewById(R.id.stopButton);
-        stop.setOnClickListener(this);*/
     }
     private PrintWriter output;
     private BufferedReader input;
